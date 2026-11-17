@@ -277,7 +277,7 @@ def write_tables(o):
             L.append(f"| {s['lift']:.1f} | {s['strut']:.1f} | {s['strut_name']} | "
                      f"{s['prop']:.1f} | {sg} | {s['hub_to_shelf']:.1f} |")
     ll = o["lift_limits"]
-    L.append(f"\nWheel envelope touches a strut at **{ll['wheel_hits_strut_at']} mm** lift; "
+    L.append(f"\nWheel envelope touches a strut {('at **' + str(ll['wheel_hits_strut_at']) + ' mm** lift') if ll['wheel_hits_strut_at'] is not None else 'at **no lift up to 40 mm**'}; "
              f"hub meets battery shelf at **{ll['hub_hits_shelf_at']:.0f} mm**.\n")
     L.append("### Room for a motor pointing inward (25 mm class)\n")
     L.append("| Bevel side | Max body length | Limited by | Other limits |\n|---|---|---|---|")

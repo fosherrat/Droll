@@ -47,11 +47,18 @@ BRIDGE_X = 28.0
 ROD_X = 21.0               # guide rods at X = ±21, Y = 0
 ROD_D = 4.0
 LM4 = dict(od=8.0, l=12.0)
+TOWER_FLOOR = 1.5         # tower floor under the LM4UU; the spring bears on it
+COLLAR = dict(od=9.0, w=4.0)   # Ø4 shaft collar with M3 set screw = droop stop on the rod top
 STATIC_DEFL = P.POD_SPRING_TRAVEL_STATIC  # 2.7
 BUMP = P.POD_BUMP_TRAVEL                  # 10
 SPRING = dict(od=6.0, wire=0.5, free=35.0, rate=0.3, preload_n=3.5)   # per spring
 SPRING_LOADED_L = SPRING["free"] - SPRING["preload_n"] / SPRING["rate"] - STATIC_DEFL
 TOWER_Z0 = BRIDGE_Z0 + BRIDGE_H + SPRING_LOADED_L          # tower underside
+# Rods are pressed into the bridge and slide in LM4UU held by the tower (nothing hangs below the
+# bridge, so the wheel cannot reach a rod end at full bump). The collar on the rod top lands on the
+# LM4UU when the pod is lifted (carriage STATIC_DEFL lower).
+LM4_TOP = TOWER_Z0 + TOWER_FLOOR + LM4["l"]
+ROD_TOP = LM4_TOP + STATIC_DEFL + COLLAR["w"] + 0.5        # carriage frame, rolling state
 TOWER_Y = 9.0              # tower half-depth along Y
 HUB_T = 3.0                # hub plate thickness, top face at HUB_Y_DOWN
 SHELF_T = 3.0
@@ -122,7 +129,7 @@ def carriage():
         body -= ycyl(BRG["od"] / 2, s * (a0 + 0.5), s * (a0 + 0.5 + BRG["w"]))
         body -= ycyl(3.2, s * a0 - s * 1, s * a1 + s * 1)
     for sx in (1, -1):
-        body -= zcyl(LM4["od"] / 2, BRIDGE_Z0 - 1, zt + 1, x=sx * ROD_X)
+        body -= zcyl(ROD_D / 2, BRIDGE_Z0 - 1, zt + 1, x=sx * ROD_X)          # rod press fit
     body -= zcyl(MOTOR["gearbox_d"] / 2 + 0.3, MOTOR_FACE_Z, zt + 1, y=my)
     body -= zcyl(4.2, MOTOR_FACE_Z - MOUNT_T - 1, MOTOR_FACE_Z + 1, y=my)
     for sx in (1, -1):
@@ -139,8 +146,10 @@ def tower_raw(z_top=140.0):
     # bump-stop boss between the rods, 2 mm urethane pad on it reaches the bridge at BUMP
     t += box(-7, 7, -6, 6, BRIDGE_Z0 + BRIDGE_H + BUMP + 2.0, TOWER_Z0 + 0.1)
     for sx in (1, -1):
-        t -= zcyl(ROD_D / 2, TOWER_Z0 - 1, TOWER_Z0 + 22, x=sx * ROD_X)       # rod pockets (22 deep)
-        t -= zcyl(SPRING["od"] / 2 + 0.4, TOWER_Z0 - 1, TOWER_Z0 + 4, x=sx * ROD_X)  # spring seat
+        x = sx * ROD_X
+        t -= zcyl(2.3, TOWER_Z0 - 1, TOWER_Z0 + TOWER_FLOOR + 0.1, x=x)          # rod through the floor
+        t -= zcyl(LM4["od"] / 2, TOWER_Z0 + TOWER_FLOOR, LM4_TOP, x=x)        # LM4UU bore
+        t -= zcyl(COLLAR["od"] / 2 + 0.75, LM4_TOP, z_top + 1, x=x)           # collar pocket, open on top
     return t
 
 
@@ -160,10 +169,10 @@ def wheel_flange():
     web over the boss (r < 10.2) from Y −13.1; 2×M2.5 at PCD 26 into the wheel's holes;
     D-bore on the axle. Ends 0.5 mm short of the bearing, with a Ø8 boss onto the inner race."""
     y_out = -ARM_IN + 0.5
-    ring = ycyl(16, -WHEEL_FACE - 0.1, y_out) - ycyl(10.2, -WHEEL_FACE - 0.2, -BOSS_FACE - 0.1)
-    web = ycyl(10.3, -BOSS_FACE - 0.1, y_out)
+    ring = ycyl(16, -WHEEL_FACE - 0.1, y_out) - ycyl(11.5, -WHEEL_FACE + 1, -BOSS_FACE - 0.1)
+    web = ycyl(11.5, -BOSS_FACE - 0.1, y_out)
     f = ring + web
-    f += ycyl(4.0, y_out, -ARM_IN)                            # 0.5 mm boss onto the bearing inner race
+    f += ycyl(3.0, y_out, -(ARM_IN + 0.5))                    # Ø6 boss through the arm onto the bearing inner race
     f -= ycyl(AXLE_D / 2, -30, 0)
     for a in (0, 180):
         f -= ycyl(1.35, -30, 0, x=13 * cos(radians(a)), z=13 * sin(radians(a)))
@@ -187,7 +196,8 @@ def wheel_drilled():
 
 
 def spacer():
-    s = ycyl(4.0, BOSS_FACE, ARM_IN) - ycyl(AXLE_D / 2 + 0.1, 0, 20)
+    s = ycyl(4.0, BOSS_FACE + 0.1, ARM_IN - 0.5) + ycyl(3.0, ARM_IN - 0.5, ARM_IN + 0.5)   # Ø6 tip onto inner race
+    s -= ycyl(AXLE_D / 2 + 0.1, 0, 30)
     return col(s, C_PRINT2, "spacer")
 
 
@@ -214,16 +224,17 @@ def pod(lift=0.0, bump=0.0):
     mot = Pos(0, APEX_Y, MOTOR_FACE_Z) * Rot(180, 0, 0) * Rot(0, 0, 90) * gearmotor()  # shaft → −Z, M3 holes on X
     moving.append(mot)
     for sx in (1, -1):
-        moving.append(col(zcyl(LM4["od"] / 2, BRIDGE_Z0, BRIDGE_Z0 + LM4["l"], x=sx * ROD_X)
-                          - zcyl(ROD_D / 2, 0, 100, x=sx * ROD_X), C_STEEL, "LM4UU"))
+        x = sx * ROD_X
+        moving.append(col(zcyl(ROD_D / 2, BRIDGE_Z0 + 0.5, ROD_TOP, x=x), C_STEEL, "rod Ø4"))
+        moving.append(col(zcyl(COLLAR["od"] / 2, ROD_TOP - 0.5 - COLLAR["w"], ROD_TOP - 0.5, x=x)
+                          - zcyl(ROD_D / 2, 0, 200, x=x), C_DARK, "stop collar"))
     moving = [Pos(0, 0, dz) * m for m in moving]
 
     fixed = []      # moves with the hub, not with the carriage
-    rod_z0 = BRIDGE_Z0 - STATIC_DEFL - 3.0
     for sx in (1, -1):
-        fixed.append(col(zcyl(ROD_D / 2, rod_z0, TOWER_Z0 + 22, x=sx * ROD_X), C_STEEL, "rod Ø4"))
-        fixed.append(col(zcyl(4.0, rod_z0, rod_z0 + 3, x=sx * ROD_X) - zcyl(ROD_D / 2, 0, 200, x=sx * ROD_X),
-                         C_DARK, "stop collar"))
+        x = sx * ROD_X
+        fixed.append(col(zcyl(LM4["od"] / 2, TOWER_Z0 + TOWER_FLOOR, LM4_TOP, x=x) - zcyl(ROD_D / 2, 0, 200, x=x),
+                         C_STEEL, "LM4UU"))
         fixed.append(spring(TOWER_Z0 - (BRIDGE_Z0 + BRIDGE_H) - dz, sx * ROD_X) if dz == 0 else
                      Pos(0, 0, dz) * spring(TOWER_Z0 - (BRIDGE_Z0 + BRIDGE_H) - dz, sx * ROD_X))
     fixed.append(col(box(-7, 7, -6, 6, BRIDGE_Z0 + BRIDGE_H + BUMP, BRIDGE_Z0 + BRIDGE_H + BUMP + 2.0),
@@ -255,24 +266,32 @@ def hub_cut_world(lift):
     return Pos(0, y - 500, 0) * Box(2000, 1000, 2000)
 
 
+def axis_xz(az, x_local):
+    """World x/z where the pod-frame line (x_local, 0, Z) crosses the hub plate mid-plane (rolling)."""
+    pl, _ = pod_plane(az)
+    y = P.HUB_Y_DOWN - HUB_T / 2
+    p0 = pl.from_local_coords((x_local, 0, 0))
+    d = pl.z_dir
+    t = (y - p0.Y) / d.Y
+    return p0.X + d.X * t, p0.Z + d.Z * t
+
+
 def tower_world(az, lift):
     t = to_world(tower_raw(), az, lift) & hub_cut_world(lift)
-    # 2×M3 vertical screws into the hub plate
-    pl, _ = pod_plane(az)
-    for sx in (1, -1):
-        p = to_world(Pos(sx * (ROD_X - 9), 0, 0) * Box(0.1, 0.1, 0.1), az, lift).center()
-        t -= Pos(p.X, P.HUB_Y_DOWN - HUB_T + lift - 12, p.Z) * Rot(-90, 0, 0) * Cylinder(1.25, 13, align=MIN_Z)
+    # 2×M3 vertical screws (self-tapping into the print) from the hub plate down into the tower top
+    for x, z in tower_top_xz(az):
+        t -= Pos(x, P.HUB_Y_DOWN - HUB_T + lift - 12, z) * Rot(-90, 0, 0) * Cylinder(1.25, 13, align=MIN_Z)
     return col(t, C_PRINT, "tower")
 
 
 def tower_top_xz(az):
-    """World x/z of a tower centre at the hub plate plane, for hub plate holes."""
-    pl, _ = pod_plane(az)
-    pts = []
-    for sx in (1, -1):
-        p = to_world(Pos(sx * (ROD_X - 9), 0, 0) * Box(0.1, 0.1, 0.1), az, 0).center()
-        pts.append((p.X, p.Z))
-    return pts
+    """World x/z of the two tower screws (at pod X = ±(ROD_X − 9), between the rods)."""
+    return [axis_xz(az, sx * (ROD_X - 9)) for sx in (1, -1)]
+
+
+def rod_top_xz(az):
+    """World x/z where each rod axis crosses the hub plate."""
+    return [axis_xz(az, sx * ROD_X) for sx in (1, -1)]
 
 
 def polar(r, az):
@@ -300,6 +319,8 @@ def hub_plate():
     for az in P.WHEEL_AZIMUTHS:
         for xz in tower_top_xz(az):
             holes.append(Pos(*_skxy(xz)) * Circle(1.7))
+        for xz in rod_top_xz(az):                            # rod tops + collars pass at full bump
+            holes.append(Pos(*_skxy(xz)) * Circle(5.5))
     for h in holes:
         s -= hplate(P.HUB_Y_DOWN + 1, HUB_T + 2, h)
     return col(s, C_LASER, "hub plate")
@@ -357,7 +378,7 @@ def base_plate_y():
 @lru_cache
 def guide_rods():
     parts = []
-    y0, y1 = base_plate_y() + BASE_T, P.BATTERY_SHELF_Y + SHELF_T
+    y0, y1 = base_plate_y() + BASE_T, P.BATTERY_SHELF_Y + SHELF_T - 0.5   # end under the battery
     for az in P.GUIDE_ROD_AZ:
         x, z = polar(P.GUIDE_ROD_R, az)
         parts.append(col(Pos(x, y0, z) * Rot(-90, 0, 0) * Cylinder(3.0, y1 - y0, align=MIN_Z), C_STEEL, "rod Ø6"))
@@ -465,7 +486,7 @@ if __name__ == "__main__":
     import time
     t0 = time.time()
     report = dict(gear=GI, apex_y=APEX_Y, gear_back_y=GEAR_BACK_Y, motor_face_z=MOTOR_FACE_Z,
-                  spring_loaded_len=SPRING_LOADED_L, tower_z0=TOWER_Z0)
+                  spring_loaded_len=SPRING_LOADED_L, tower_z0=TOWER_Z0, rod_len=ROD_TOP - BRIDGE_Z0 - 0.5)
     print(json.dumps(report, indent=1, default=float))
     states = {}
     for lift in (0.0, P.LIFT_STROKE):

@@ -4,25 +4,25 @@
 |---|---|
 | Contact point | r 103.1, y -221.1 |
 | Wheel centre | r 90.9, y -194.9 |
-| Bottom square plane | y -160.8 |
-| Lower side face height | 115.9 |
+| Bottom square plane | y -153.6 |
+| Lower side face height | 107.3 |
 | Prop tip to shell inner | 4.3 |
 
 ### Lift sweep (worst of 3 wheels; wheel envelope Ø58 × 26)
 
 | Lift | Wheel→strut | Nearest strut | Wheel→prop disc | Wheel→shell | Hub→shelf |
 |---|---|---|---|---|---|
-| 0.0 | 15.8 | bottom-square (wheel @0°) | 58.1 | contact | 28.0 |
-| 10.0 | 11.5 | bottom-square (wheel @0°) | 50.5 | 5.7 | 18.0 |
-| 15.0 | 9.3 | bottom-square (wheel @120°) | 45.5 | 10.1 | 13.0 |
-| 20.0 | 6.8 | bottom-square (wheel @120°) | 40.5 | 14.4 | 8.0 |
-| 22.5 | 5.7 | bottom-square (wheel @120°) | 38.0 | 16.6 | 5.5 |
-| 25.0 | 4.6 | bottom-square (wheel @120°) | 35.5 | 18.7 | 3.0 |
-| 30.0 | 2.7 | bottom-square (wheel @120°) | 30.5 | 23.0 | -2.0 |
-| 35.0 | 1.0 | bottom-square (wheel @120°) | 25.5 | 27.2 | -7.0 |
-| 40.0 | -1.0 | bottom-square (wheel @0°) | 20.5 | 31.4 | -12.0 |
+| 0.0 | 23.3 | bottom-square (wheel @0°) | 58.1 | contact | 28.0 |
+| 10.0 | 19.1 | bottom-square (wheel @0°) | 50.5 | 5.7 | 18.0 |
+| 15.0 | 17.0 | bottom-square (wheel @0°) | 45.5 | 10.1 | 13.0 |
+| 20.0 | 14.7 | bottom-square (wheel @120°) | 40.5 | 14.4 | 8.0 |
+| 22.5 | 13.5 | bottom-square (wheel @120°) | 38.0 | 16.6 | 5.5 |
+| 25.0 | 12.3 | bottom-square (wheel @120°) | 35.5 | 18.7 | 3.0 |
+| 30.0 | 10.0 | bottom-square (wheel @120°) | 30.5 | 23.0 | -2.0 |
+| 35.0 | 8.1 | bottom-square (wheel @120°) | 25.5 | 27.2 | -7.0 |
+| 40.0 | 6.4 | bottom-square (wheel @120°) | 20.5 | 31.4 | -12.0 |
 
-Wheel envelope touches a strut at **38.0 mm** lift; hub meets battery shelf at **28 mm**.
+Wheel envelope touches a strut at **no lift up to 40 mm**; hub meets battery shelf at **28 mm**.
 
 ### Room for a motor pointing inward (25 mm class)
 
