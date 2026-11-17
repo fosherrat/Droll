@@ -36,7 +36,7 @@ MIN_Z = (Align.CENTER, Align.CENTER, Align.MIN)
 RW = 29.75                 # mean rolling radius of Nexus 14135 (58.9–60.05 measured)
 WHEEL_HALF = 14.0          # rollers ±14
 BOSS_FACE = 13.0           # wheel hub boss faces at Y = ±13
-ARM_IN, ARM_T = 15.0, 6.0  # fork arm inner face |Y|, thickness
+ARM_IN, ARM_T = 17.0, 6.0  # fork arm inner face |Y|, thickness (room for the wheel flange)
 ARM_W = 22.0               # arm width in X
 BRG = dict(od=11.0, id=5.0, w=5.0)       # 685ZZ
 AXLE_D = 5.0
@@ -152,15 +152,38 @@ def spring(length, x):
     return col(Pos(x, 0, BRIDGE_Z0 + BRIDGE_H) * s, C_SPRING, "spring")
 
 
+WHEEL_FACE = 11.6         # wheel plate face at r 10–18 (|Y|, measured); boss to 13.0 inside r 10
+
+
 def wheel_flange():
-    """Pole-side flange: Ø12 spigot into the bore, recess over the boss, 2×M2.5 at PCD 26."""
-    f = ycyl(16, -BOSS_FACE + 3.5, -ARM_IN + 0.5)            # Y −9.5 … −14.5
-    f -= ycyl(7.2, -BOSS_FACE + 3.5 - 0.1, -BOSS_FACE)        # recess for the Ø13.8 boss
-    f += ycyl(4.0, -ARM_IN + 0.5, -ARM_IN)                    # 0.5 mm boss onto the bearing inner race
-    f -= ycyl(AXLE_D / 2, -20, 0)
+    """Pole-side drive flange (stepped): ring r 10.2–16 seats on the plate face at Y −11.6,
+    web over the boss (r < 10.2) from Y −13.1; 2×M2.5 at PCD 26 into the wheel's holes;
+    D-bore on the axle. Ends 0.5 mm short of the bearing, with a Ø8 boss onto the inner race."""
+    y_out = -ARM_IN + 0.5
+    ring = ycyl(16, -WHEEL_FACE - 0.1, y_out) - ycyl(10.2, -WHEEL_FACE - 0.2, -BOSS_FACE - 0.1)
+    web = ycyl(10.3, -BOSS_FACE - 0.1, y_out)
+    f = ring + web
+    f += ycyl(4.0, y_out, -ARM_IN)                            # 0.5 mm boss onto the bearing inner race
+    f -= ycyl(AXLE_D / 2, -30, 0)
     for a in (0, 180):
-        f -= ycyl(1.35, -20, 0, x=13 * cos(radians(a)), z=13 * sin(radians(a)))
+        f -= ycyl(1.35, -30, 0, x=13 * cos(radians(a)), z=13 * sin(radians(a)))
     return col(f, C_PRINT2, "wheel flange")
+
+
+@lru_cache
+def wheel_drilled():
+    """Vendor wheel with the hub insert drilled through Ø5 for the axle (build step)."""
+    from build123d import Compound as _C
+    w = omni_wheel()
+    drill = Cylinder(AXLE_D / 2 + 0.05, 60)
+    out = []
+    for so in w.solids():
+        c = so.color
+        if so.bounding_box().size.X < 20:                     # hub insert only
+            so = so - drill
+            so.color = c
+        out.append(so)
+    return _C(children=out, label="omni wheel Nexus 14135")
 
 
 def spacer():
@@ -173,7 +196,7 @@ def pod(lift=0.0, bump=0.0):
     and by +bump (toward the tower) when a rolling bump compresses the springs."""
     dz = -STATIC_DEFL if lift > 0 else bump
     moving = []
-    w = Rot(-90, 0, 0) * omni_wheel()             # wheel axis Z → Y
+    w = Rot(-90, 0, 0) * wheel_drilled()          # wheel axis Z → Y
     moving.append(w)
     moving.append(carriage())
     moving.append(wheel_flange())
