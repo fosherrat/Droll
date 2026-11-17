@@ -168,9 +168,10 @@ def spacer():
     return col(s, C_PRINT2, "spacer")
 
 
-def pod(lift=0.0, with_tower=True):
-    """All parts of one pod in the pod frame. Carriage group shifts by −STATIC_DEFL in Z when lifted."""
-    dz = -STATIC_DEFL if lift > 0 else 0.0
+def pod(lift=0.0, bump=0.0):
+    """All parts of one pod in the pod frame. Carriage group shifts by −STATIC_DEFL in Z when lifted,
+    and by +bump (toward the tower) when a rolling bump compresses the springs."""
+    dz = -STATIC_DEFL if lift > 0 else bump
     moving = []
     w = Rot(-90, 0, 0) * omni_wheel()             # wheel axis Z → Y
     moving.append(w)

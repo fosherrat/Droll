@@ -22,7 +22,9 @@ const scene = new THREE.Scene(); scene.background = new THREE.Color(cfg.bg || '#
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 const root = new THREE.Group(); scene.add(root);
-if (cfg.up === 'z') root.rotation.x = -Math.PI / 2;   // CAD z-up -> three y-up
+// build123d's glTF export maps CAD (x,y,z) -> (x,z,-y) assuming CAD is z-up.
+// For models built y-up (Droll world frame) undo that: rotate +90° about X.
+if (cfg.up === 'y') root.rotation.x = Math.PI / 2;
 
 const loader = new GLTFLoader();
 const d2r = d => d * Math.PI / 180;
