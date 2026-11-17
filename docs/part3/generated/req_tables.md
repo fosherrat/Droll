@@ -8,28 +8,28 @@
 | Lower side face height | 115.9 |
 | Prop tip to shell inner | 4.3 |
 
-### Lift sweep (worst of 3 wheels; wheel envelope Ø58 × 25)
+### Lift sweep (worst of 3 wheels; wheel envelope Ø58 × 26)
 
 | Lift | Wheel→strut | Nearest strut | Wheel→prop disc | Wheel→shell | Hub→shelf |
 |---|---|---|---|---|---|
-| 0.0 | 16.3 | bottom-square (wheel @0°) | 58.3 | contact | 28.0 |
-| 10.0 | 12.0 | bottom-square (wheel @0°) | 50.7 | 5.8 | 18.0 |
-| 15.0 | 9.8 | bottom-square (wheel @120°) | 45.7 | 10.1 | 13.0 |
-| 20.0 | 7.3 | bottom-square (wheel @120°) | 40.7 | 14.5 | 8.0 |
-| 22.5 | 6.1 | bottom-square (wheel @120°) | 38.2 | 16.6 | 5.5 |
-| 25.0 | 5.0 | bottom-square (wheel @120°) | 35.7 | 18.8 | 3.0 |
-| 30.0 | 3.1 | bottom-square (wheel @120°) | 30.7 | 23.0 | -2.0 |
-| 35.0 | 1.5 | bottom-square (wheel @120°) | 25.7 | 27.3 | -7.0 |
-| 40.0 | -0.5 | bottom-square (wheel @0°) | 20.7 | 31.5 | -12.0 |
+| 0.0 | 15.8 | bottom-square (wheel @0°) | 58.1 | contact | 28.0 |
+| 10.0 | 11.5 | bottom-square (wheel @0°) | 50.5 | 5.7 | 18.0 |
+| 15.0 | 9.3 | bottom-square (wheel @120°) | 45.5 | 10.1 | 13.0 |
+| 20.0 | 6.8 | bottom-square (wheel @120°) | 40.5 | 14.4 | 8.0 |
+| 22.5 | 5.7 | bottom-square (wheel @120°) | 38.0 | 16.6 | 5.5 |
+| 25.0 | 4.6 | bottom-square (wheel @120°) | 35.5 | 18.7 | 3.0 |
+| 30.0 | 2.7 | bottom-square (wheel @120°) | 30.5 | 23.0 | -2.0 |
+| 35.0 | 1.0 | bottom-square (wheel @120°) | 25.5 | 27.2 | -7.0 |
+| 40.0 | -1.0 | bottom-square (wheel @0°) | 20.5 | 31.4 | -12.0 |
 
-Wheel envelope touches a strut at **39.0 mm** lift; hub meets battery shelf at **28 mm**.
+Wheel envelope touches a strut at **38.0 mm** lift; hub meets battery shelf at **28 mm**.
 
 ### Room for a motor pointing inward (25 mm class)
 
 | Bevel side | Max body length | Limited by | Other limits |
 |---|---|---|---|
-| equator side | **52 mm** | prop disc | hub plate 66, lead-screw nut 191 |
-| pole side | **86 mm** | hub plate | lead-screw nut 94, other motors 118 |
+| equator side | **52 mm** | prop disc | hub plate 66, lead-screw nut 192 |
+| pole side | **87 mm** | hub plate | lead-screw nut 94, other motors 117 |
 
 ### Drive (pendulum-limited, frame tilt 30°, hanging 2.93 kg, COM −50 mm)
 

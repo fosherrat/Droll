@@ -41,23 +41,31 @@ WHEEL_COUNT = 3
 WHEEL_AZIMUTHS = (0, 120, 240)          # [proposed]
 CONTACT_ANGLE = 25.0                    # [proposed] from the bottom pole
 WHEEL_DIRECTION = "azimuth"             # [fixed] ballbot: push sideways
-WHEEL_D = 58.0                          # [assumed] 48–60 fit; set by chosen part
-WHEEL_W = 25.0                          # [assumed] envelope width of a double-row wheel
+WHEEL_D = 58.0                          # [fixed] Nexus 14135 (step 1)
+WHEEL_W = 26.0                          # [fixed] Nexus 14135 drawing
 POD_SPRING_TRAVEL_STATIC = 2.7          # [proposed] off the stop when loaded
 POD_BUMP_TRAVEL = 10.0                  # [proposed]
 
 # hub plate / lift
-HUB_Y_DOWN = -104.0                     # [open] wheel sheet; drive sheet says -183
-LIFT_STROKE = 22.5                      # [open] 21 (spec, T8x2) vs 22.5 (drive sheet, Tr8x1.5)
+HUB_Y_DOWN = -104.0                     # [fixed] D2: Part 3 value; Part 2 must move its screw up
+LIFT_STROKE = 22.5                      # [fixed] D1: Tr8x1.5 x 15 turns
 LIFT_STROKE_MIN, LIFT_STROKE_MAX = 15.0, 25.0   # [proposed] acceptable window
 BATTERY_SHELF_Y = -76.0                 # [proposed] fixed shelf above the hub
 GUIDE_ROD_D = 6.0
 GUIDE_ROD_R = 45.0
 GUIDE_ROD_AZ = (180, 300)
 
+# chosen purchased parts (step 1) — see docs/part3/01-part-selection.md
+MOTOR = "Pololu #4843 20.4:1 25Dx65L HP 12V, 48 CPR"
+MOTOR_D = 25.0                          # gearbox / can diameter
+MOTOR_BODY_L = 64.5                     # gearbox 19 + motor 30.8 + encoder 14.7
+MOTOR_SHAFT_D, MOTOR_SHAFT_L = 4.0, 12.5   # D-shaft
+MOTOR_NOLOAD_RPM, MOTOR_STALL_NM, MOTOR_STALL_A = 500, 0.73, 5.0
+ENCODER_COUNTS_PER_OUT_REV = 48 * 20.4  # ≈ 979
+
 # lead screw (owned by Part 2, mirrored here)
-SCREW = "Tr8x1.5"                       # [open] spec says T8x2
-SCREW_TURNS_PER_STROKE = 15.0           # [open] spec says 10.6
+SCREW = "Tr8x1.5"                       # [fixed] D1, single start, self-locking
+SCREW_TURNS_PER_STROKE = 15.0           # [fixed] D1
 
 # ---------------------------------------------------------------- mass / dynamics
 ROBOT_MASS = 3.7                        # [assumed] rev 0.3 estimate
@@ -65,11 +73,11 @@ HANGING_MASS = ROBOT_MASS - SHELL_MASS  # everything the wheels carry
 COM_BELOW_CENTRE = 50.0                 # [assumed] hanging COM below sphere centre
 PART3_MASS_BUDGET = 380.0               # g, spec budget
 PART3_MASS_V1_EST = 761.0               # g, wheel sheet v1 BOM
-PART3_MASS_TARGET = 500.0               # [proposed] g, target for this design round
+PART3_MASS_TARGET = None                # [fixed] D6: not a driver this round; track only
 
 # operating targets
-V_MAX = 1.0                             # [assumed] m/s top rolling speed (planning case)
-V_NOMINAL = 0.5                         # [assumed] m/s typical indoor speed
+V_MAX = 1.0                             # [fixed] D5 m/s top rolling speed (planning case)
+V_NOMINAL = 0.5                         # [fixed] D5 m/s typical indoor speed
 YAW_RATE = 90.0                         # [assumed] °/s spin while rolling
 ALIGN_TOL = 1.5                         # [fixed] ° shell-to-frame alignment for step 2
 FRAME_TILT_MAX = 30.0                   # [assumed] ° allowed pendulum tilt
