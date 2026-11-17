@@ -1,0 +1,78 @@
+"""Droll shared design parameters — single source of truth.
+
+Units: mm, kg, N, s, degrees (unless a name says otherwise).
+Frame: origin at the shell (sphere) centre, +y up, x/z horizontal.
+Azimuth is measured from +x toward +z. Props sit at azimuth 0/90/180/270.
+
+Each value carries a status tag in the comment:
+  [fixed]    agreed in DRL-SPEC rev 0.3, change only by spec revision
+  [proposed] proposed by a part sheet, still needs team sign-off
+  [assumed]  planning assumption, replace with measured/datasheet value
+  [open]     conflicting sources, decision needed (see docs/part3/00-requirements.md)
+"""
+from math import sqrt
+
+# ---------------------------------------------------------------- shell
+SHELL_R_OUT = 250.0          # [fixed] Ø500 outer
+SHELL_WALL = 6.0             # [fixed] lattice PETG
+SHELL_R_IN = SHELL_R_OUT - SHELL_WALL   # 244, wheel running surface
+SHELL_KEEPOUT_R = 230.0      # [fixed] nothing on the shell inside r 230 (hinge pads)
+SHELL_MASS = 0.77            # [assumed] hemisphere + petals + hinges
+
+# ---------------------------------------------------------------- cage
+CAGE_CORNER_R = 223.7        # [fixed] all cage corners on this sphere
+CAGE_STRUT_D = 6.0           # [fixed] carbon tube
+CAGE_EDGE = 160.0            # [fixed] standard strut length
+BOTTOM_SQUARE = 220.0        # [proposed] was 160; needed for 25° contact
+BOTTOM_SQUARE_Y = -sqrt(CAGE_CORNER_R**2 - 2 * (BOTTOM_SQUARE / 2) ** 2)  # ≈ -160.7
+EQUATOR_SQUARE_HALF = CAGE_EDGE / 2                 # side-square half width (80)
+SIDE_FACE_X = CAGE_EDGE / 2 * (1 + sqrt(2))         # ≈ 193.1, side squares' plane
+LOWER_SIDE_TOP_Y = -CAGE_EDGE / 2                   # -80, top edge of lower side faces
+
+# ---------------------------------------------------------------- props (option A, level)
+PROP_D = 127.0               # [fixed] 5"
+PROP_AZIMUTHS = (0, 90, 180, 270)
+PROP_HUB_R = 152.0           # [proposed] with 22 cm square
+PROP_PLANE_Y = -105.0        # [proposed]
+PROP_CLEAR_MIN = 10.0        # [assumed] keep solid parts this far from a prop disc
+
+# ---------------------------------------------------------------- wheel module (Part 3)
+WHEEL_COUNT = 3
+WHEEL_AZIMUTHS = (0, 120, 240)          # [proposed]
+CONTACT_ANGLE = 25.0                    # [proposed] from the bottom pole
+WHEEL_DIRECTION = "azimuth"             # [fixed] ballbot: push sideways
+WHEEL_D = 58.0                          # [assumed] 48–60 fit; set by chosen part
+WHEEL_W = 25.0                          # [assumed] envelope width of a double-row wheel
+POD_SPRING_TRAVEL_STATIC = 2.7          # [proposed] off the stop when loaded
+POD_BUMP_TRAVEL = 10.0                  # [proposed]
+
+# hub plate / lift
+HUB_Y_DOWN = -104.0                     # [open] wheel sheet; drive sheet says -183
+LIFT_STROKE = 22.5                      # [open] 21 (spec, T8x2) vs 22.5 (drive sheet, Tr8x1.5)
+LIFT_STROKE_MIN, LIFT_STROKE_MAX = 15.0, 25.0   # [proposed] acceptable window
+BATTERY_SHELF_Y = -76.0                 # [proposed] fixed shelf above the hub
+GUIDE_ROD_D = 6.0
+GUIDE_ROD_R = 45.0
+GUIDE_ROD_AZ = (180, 300)
+
+# lead screw (owned by Part 2, mirrored here)
+SCREW = "Tr8x1.5"                       # [open] spec says T8x2
+SCREW_TURNS_PER_STROKE = 15.0           # [open] spec says 10.6
+
+# ---------------------------------------------------------------- mass / dynamics
+ROBOT_MASS = 3.7                        # [assumed] rev 0.3 estimate
+HANGING_MASS = ROBOT_MASS - SHELL_MASS  # everything the wheels carry
+COM_BELOW_CENTRE = 50.0                 # [assumed] hanging COM below sphere centre
+PART3_MASS_BUDGET = 380.0               # g, spec budget
+PART3_MASS_V1_EST = 761.0               # g, wheel sheet v1 BOM
+PART3_MASS_TARGET = 500.0               # [proposed] g, target for this design round
+
+# operating targets
+V_MAX = 1.0                             # [assumed] m/s top rolling speed (planning case)
+V_NOMINAL = 0.5                         # [assumed] m/s typical indoor speed
+YAW_RATE = 90.0                         # [assumed] °/s spin while rolling
+ALIGN_TOL = 1.5                         # [fixed] ° shell-to-frame alignment for step 2
+FRAME_TILT_MAX = 30.0                   # [assumed] ° allowed pendulum tilt
+MU_ROLLER = 0.5                         # [assumed] roller on PETG
+LOSS_FACTOR = 1.5                       # [assumed] rollers + lattice bumps
+SUPPLY_V = 12.0                         # [proposed] buck from 6S for wheel motors

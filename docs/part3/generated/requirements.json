@@ -1,0 +1,790 @@
+{
+  "geometry": {
+    "contact_r": 103.11885586473066,
+    "contact_y": -221.13910003694258,
+    "wheel_centre_r": 90.86292627425038,
+    "wheel_centre_y": -194.85617421287975,
+    "bottom_square_y": -160.75350696019044,
+    "lower_face_height": 115.90040460230789,
+    "prop_tip_to_shell": 4.280893544131544
+  },
+  "sweep": [
+    {
+      "lift": 0.0,
+      "strut": 16.265976275336694,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 58.29052011705815,
+      "shell_gap": 1000000000.0,
+      "hub_to_shelf": 28.0
+    },
+    {
+      "lift": 0.5,
+      "strut": 16.045240388125922,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 60.2375511420571,
+      "shell_gap": -2.5747079430691144,
+      "hub_to_shelf": 27.5
+    },
+    {
+      "lift": 1.0,
+      "strut": 15.84053855082157,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 59.7375511420571,
+      "shell_gap": -2.1331615090084597,
+      "hub_to_shelf": 27.0
+    },
+    {
+      "lift": 1.5,
+      "strut": 15.626964153913764,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 59.2375511420571,
+      "shell_gap": -1.6918390822728497,
+      "hub_to_shelf": 26.5
+    },
+    {
+      "lift": 2.0,
+      "strut": 15.411315433828616,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 58.7375511420571,
+      "shell_gap": -1.2507418721486374,
+      "hub_to_shelf": 26.0
+    },
+    {
+      "lift": 2.5,
+      "strut": 15.206847020192246,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 58.2375511420571,
+      "shell_gap": -0.80987109601827,
+      "hub_to_shelf": 25.5
+    },
+    {
+      "lift": 3.0,
+      "strut": 14.998164139169823,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 57.7375511420571,
+      "shell_gap": -0.3692279794223907,
+      "hub_to_shelf": 25.0
+    },
+    {
+      "lift": 3.5,
+      "strut": 14.777818529026579,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 57.2375511420571,
+      "shell_gap": 0.07118624387825889,
+      "hub_to_shelf": 24.5
+    },
+    {
+      "lift": 4.0,
+      "strut": 14.56894279464484,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 56.7375511420571,
+      "shell_gap": 0.511370331839629,
+      "hub_to_shelf": 24.0
+    },
+    {
+      "lift": 4.5,
+      "strut": 14.37195067319744,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 56.2375511420571,
+      "shell_gap": 0.9513230340712937,
+      "hub_to_shelf": 23.5
+    },
+    {
+      "lift": 5.0,
+      "strut": 14.150177784831204,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 55.7375511420571,
+      "shell_gap": 1.3910430917725307,
+      "hub_to_shelf": 23.0
+    },
+    {
+      "lift": 5.5,
+      "strut": 13.932113368537493,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 55.2375511420571,
+      "shell_gap": 1.830529237667946,
+      "hub_to_shelf": 22.5
+    },
+    {
+      "lift": 6.0,
+      "strut": 13.72615700627895,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 54.7375511420571,
+      "shell_gap": 2.2697801959427863,
+      "hub_to_shelf": 22.0
+    },
+    {
+      "lift": 6.5,
+      "strut": 13.532761211376119,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 54.2375511420571,
+      "shell_gap": 2.70879468217737,
+      "hub_to_shelf": 21.5
+    },
+    {
+      "lift": 7.0,
+      "strut": 13.306934375996462,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 53.7375511420571,
+      "shell_gap": 3.1475714032813755,
+      "hub_to_shelf": 21.0
+    },
+    {
+      "lift": 7.5,
+      "strut": 13.087059327395533,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 53.2375511420571,
+      "shell_gap": 3.586109057427251,
+      "hub_to_shelf": 20.5
+    },
+    {
+      "lift": 8.0,
+      "strut": 12.879888125022545,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 52.7375511420571,
+      "shell_gap": 4.02440633398345,
+      "hub_to_shelf": 20.0
+    },
+    {
+      "lift": 8.5,
+      "strut": 12.685924133544713,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 52.2375511420571,
+      "shell_gap": 4.462461913446873,
+      "hub_to_shelf": 19.5
+    },
+    {
+      "lift": 9.0,
+      "strut": 12.470126929375771,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 51.7375511420571,
+      "shell_gap": 4.900274467374771,
+      "hub_to_shelf": 19.0
+    },
+    {
+      "lift": 9.5,
+      "strut": 12.244117689656976,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 51.2375511420571,
+      "shell_gap": 5.3378426583164185,
+      "hub_to_shelf": 18.5
+    },
+    {
+      "lift": 10.0,
+      "strut": 12.031347945584523,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 50.7375511420571,
+      "shell_gap": 5.775165139743791,
+      "hub_to_shelf": 18.0
+    },
+    {
+      "lift": 10.5,
+      "strut": 11.832387467509855,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 50.2375511420571,
+      "shell_gap": 6.212240555981992,
+      "hub_to_shelf": 17.5
+    },
+    {
+      "lift": 11.0,
+      "strut": 11.64540867218717,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 49.7375511420571,
+      "shell_gap": 6.6490675421392496,
+      "hub_to_shelf": 17.0
+    },
+    {
+      "lift": 11.5,
+      "strut": 11.408764280169104,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 49.2375511420571,
+      "shell_gap": 7.085644724035745,
+      "hub_to_shelf": 16.5
+    },
+    {
+      "lift": 12.0,
+      "strut": 11.185802091795127,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 48.7375511420571,
+      "shell_gap": 7.521970718132849,
+      "hub_to_shelf": 16.0
+    },
+    {
+      "lift": 12.5,
+      "strut": 10.977176892837871,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 48.2375511420571,
+      "shell_gap": 7.958044131460753,
+      "hub_to_shelf": 15.5
+    },
+    {
+      "lift": 13.0,
+      "strut": 10.783539705017098,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 47.7375511420571,
+      "shell_gap": 8.393863561546311,
+      "hub_to_shelf": 15.0
+    },
+    {
+      "lift": 13.5,
+      "strut": 10.590135709100789,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 47.2375511420571,
+      "shell_gap": 8.829427596340054,
+      "hub_to_shelf": 14.5
+    },
+    {
+      "lift": 14.0,
+      "strut": 10.352245616789412,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 46.7375511420571,
+      "shell_gap": 9.2647348141424,
+      "hub_to_shelf": 14.0
+    },
+    {
+      "lift": 14.5,
+      "strut": 10.079518207130796,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 46.2375511420571,
+      "shell_gap": 9.699783783529767,
+      "hub_to_shelf": 13.5
+    },
+    {
+      "lift": 15.0,
+      "strut": 9.788515026464191,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 45.7375511420571,
+      "shell_gap": 10.13457306327959,
+      "hub_to_shelf": 13.0
+    },
+    {
+      "lift": 15.5,
+      "strut": 9.510732857572126,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 45.2375511420571,
+      "shell_gap": 10.569101202295116,
+      "hub_to_shelf": 12.5
+    },
+    {
+      "lift": 16.0,
+      "strut": 9.247071351346378,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 44.7375511420571,
+      "shell_gap": 11.003366739529582,
+      "hub_to_shelf": 12.0
+    },
+    {
+      "lift": 16.5,
+      "strut": 8.998461432050512,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 44.2375511420571,
+      "shell_gap": 11.4373682039095,
+      "hub_to_shelf": 11.5
+    },
+    {
+      "lift": 17.0,
+      "strut": 8.765857248319733,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 43.7375511420571,
+      "shell_gap": 11.87110411425769,
+      "hub_to_shelf": 11.0
+    },
+    {
+      "lift": 17.5,
+      "strut": 8.550225834990083,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 43.2375511420571,
+      "shell_gap": 12.304572979215664,
+      "hub_to_shelf": 10.5
+    },
+    {
+      "lift": 18.0,
+      "strut": 8.286901515269236,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 42.7375511420571,
+      "shell_gap": 12.737773297165035,
+      "hub_to_shelf": 10.0
+    },
+    {
+      "lift": 18.5,
+      "strut": 8.008165041174744,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 42.2375511420571,
+      "shell_gap": 13.170703556148993,
+      "hub_to_shelf": 9.5
+    },
+    {
+      "lift": 19.0,
+      "strut": 7.745475761086457,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 41.7375511420571,
+      "shell_gap": 13.603362233792467,
+      "hub_to_shelf": 9.0
+    },
+    {
+      "lift": 19.5,
+      "strut": 7.500038147095056,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 41.2375511420571,
+      "shell_gap": 14.03574779722203,
+      "hub_to_shelf": 8.5
+    },
+    {
+      "lift": 20.0,
+      "strut": 7.273088768661848,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 40.7375511420571,
+      "shell_gap": 14.467858702985382,
+      "hub_to_shelf": 8.0
+    },
+    {
+      "lift": 20.5,
+      "strut": 7.065878233277065,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 40.2375511420571,
+      "shell_gap": 14.899693396969639,
+      "hub_to_shelf": 7.5
+    },
+    {
+      "lift": 21.0,
+      "strut": 6.8796485952444595,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 39.7375511420571,
+      "shell_gap": 15.331250314319675,
+      "hub_to_shelf": 7.0
+    },
+    {
+      "lift": 21.5,
+      "strut": 6.605667222887426,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 39.2375511420571,
+      "shell_gap": 15.762527879355133,
+      "hub_to_shelf": 6.5
+    },
+    {
+      "lift": 22.0,
+      "strut": 6.344295316610447,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 38.7375511420571,
+      "shell_gap": 16.193524505487403,
+      "hub_to_shelf": 6.0
+    },
+    {
+      "lift": 22.5,
+      "strut": 6.102904323961779,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 38.2375511420571,
+      "shell_gap": 16.624238595135694,
+      "hub_to_shelf": 5.5
+    },
+    {
+      "lift": 23.0,
+      "strut": 5.883123285105086,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 37.7375511420571,
+      "shell_gap": 17.054668539642336,
+      "hub_to_shelf": 5.0
+    },
+    {
+      "lift": 23.5,
+      "strut": 5.686592626890606,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 37.2375511420571,
+      "shell_gap": 17.48481271918783,
+      "hub_to_shelf": 4.5
+    },
+    {
+      "lift": 24.0,
+      "strut": 5.514922409084205,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 36.7375511420571,
+      "shell_gap": 17.914669502704754,
+      "hub_to_shelf": 4.0
+    },
+    {
+      "lift": 24.5,
+      "strut": 5.3015820199462205,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 36.2375511420571,
+      "shell_gap": 18.344237247791398,
+      "hub_to_shelf": 3.5
+    },
+    {
+      "lift": 25.0,
+      "strut": 5.04300950824644,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 35.7375511420571,
+      "shell_gap": 18.77351430062481,
+      "hub_to_shelf": 3.0
+    },
+    {
+      "lift": 25.5,
+      "strut": 4.8079280136020035,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 35.2375511420571,
+      "shell_gap": 19.20249899587253,
+      "hub_to_shelf": 2.5
+    },
+    {
+      "lift": 26.0,
+      "strut": 4.598518130625155,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 34.7375511420571,
+      "shell_gap": 19.631189656604676,
+      "hub_to_shelf": 2.0
+    },
+    {
+      "lift": 26.5,
+      "strut": 4.416954610706976,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 34.2375511420571,
+      "shell_gap": 20.059584594204352,
+      "hub_to_shelf": 1.5
+    },
+    {
+      "lift": 27.0,
+      "strut": 4.265325430642164,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 33.7375511420571,
+      "shell_gap": 20.487682108278108,
+      "hub_to_shelf": 1.0
+    },
+    {
+      "lift": 27.5,
+      "strut": 4.093925768745534,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 33.2375511420571,
+      "shell_gap": 20.915480486565485,
+      "hub_to_shelf": 0.5
+    },
+    {
+      "lift": 28.0,
+      "strut": 3.8415504680256793,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 32.7375511420571,
+      "shell_gap": 21.342978004847623,
+      "hub_to_shelf": 0.0
+    },
+    {
+      "lift": 28.5,
+      "strut": 3.617389424887497,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 32.2375511420571,
+      "shell_gap": 21.770172926855764,
+      "hub_to_shelf": -0.5
+    },
+    {
+      "lift": 29.0,
+      "strut": 3.424396687213777,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 31.7375511420571,
+      "shell_gap": 22.197063504178573,
+      "hub_to_shelf": -1.0
+    },
+    {
+      "lift": 29.5,
+      "strut": 3.2654531191888934,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 31.2375511420571,
+      "shell_gap": 22.623647976168826,
+      "hub_to_shelf": -1.5
+    },
+    {
+      "lift": 30.0,
+      "strut": 3.1432021603414864,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 30.7375511420571,
+      "shell_gap": 23.04992456984985,
+      "hub_to_shelf": -2.0
+    },
+    {
+      "lift": 30.5,
+      "strut": 2.981787264880163,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 30.2375511420571,
+      "shell_gap": 23.475891499820676,
+      "hub_to_shelf": -2.5
+    },
+    {
+      "lift": 31.0,
+      "strut": 2.742307981515375,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 29.7375511420571,
+      "shell_gap": 23.901546968160915,
+      "hub_to_shelf": -3.0
+    },
+    {
+      "lift": 31.5,
+      "strut": 2.537727243812922,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 29.2375511420571,
+      "shell_gap": 24.326889164334716,
+      "hub_to_shelf": -3.5
+    },
+    {
+      "lift": 32.0,
+      "strut": 2.3720336092731724,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 28.7375511420571,
+      "shell_gap": 24.75191626509411,
+      "hub_to_shelf": -4.0
+    },
+    {
+      "lift": 32.5,
+      "strut": 2.2489110462507576,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 28.2375511420571,
+      "shell_gap": 25.176626434381745,
+      "hub_to_shelf": -4.5
+    },
+    {
+      "lift": 33.0,
+      "strut": 2.171401090975821,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 27.7375511420571,
+      "shell_gap": 25.601017823232638,
+      "hub_to_shelf": -5.0
+    },
+    {
+      "lift": 33.5,
+      "strut": 1.968979953159069,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 27.2375511420571,
+      "shell_gap": 26.02508856967563,
+      "hub_to_shelf": -5.5
+    },
+    {
+      "lift": 34.0,
+      "strut": 1.7549773496688275,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 26.7375511420571,
+      "shell_gap": 26.44883679863358,
+      "hub_to_shelf": -6.0
+    },
+    {
+      "lift": 34.5,
+      "strut": 1.5857232163346344,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 26.2375511420571,
+      "shell_gap": 26.872260621823358,
+      "hub_to_shelf": -6.5
+    },
+    {
+      "lift": 35.0,
+      "strut": 1.4663077858335454,
+      "strut_name": "bottom-square (wheel @120\u00b0)",
+      "prop": 25.7375511420571,
+      "shell_gap": 27.295358137655,
+      "hub_to_shelf": -7.0
+    },
+    {
+      "lift": 35.5,
+      "strut": 1.3379644636321304,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 25.2375511420571,
+      "shell_gap": 27.718127431129773,
+      "hub_to_shelf": -7.5
+    },
+    {
+      "lift": 36.0,
+      "strut": 1.0618276572894336,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 24.7375511420571,
+      "shell_gap": 28.14056657373797,
+      "hub_to_shelf": -8.0
+    },
+    {
+      "lift": 36.5,
+      "strut": 0.8313120660300615,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 24.2375511420571,
+      "shell_gap": 28.56267362335595,
+      "hub_to_shelf": -8.5
+    },
+    {
+      "lift": 37.0,
+      "strut": 0.6550595586246892,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 23.7375511420571,
+      "shell_gap": 28.984446624141896,
+      "hub_to_shelf": -9.0
+    },
+    {
+      "lift": 37.5,
+      "strut": 0.5411818093512055,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 23.2375511420571,
+      "shell_gap": 29.405883606431814,
+      "hub_to_shelf": -9.5
+    },
+    {
+      "lift": 38.0,
+      "strut": 0.3493621683670165,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 22.7375511420571,
+      "shell_gap": 29.826982586633676,
+      "hub_to_shelf": -10.0
+    },
+    {
+      "lift": 38.5,
+      "strut": 0.035122216912325754,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 22.2375511420571,
+      "shell_gap": 30.247741567121835,
+      "hub_to_shelf": -10.5
+    },
+    {
+      "lift": 39.0,
+      "strut": -0.22408450987761874,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 21.7375511420571,
+      "shell_gap": 30.66815853613005,
+      "hub_to_shelf": -11.0
+    },
+    {
+      "lift": 39.5,
+      "strut": -0.41167105162269424,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 21.2375511420571,
+      "shell_gap": 31.088231467643936,
+      "hub_to_shelf": -11.5
+    },
+    {
+      "lift": 40.0,
+      "strut": -0.511388603716008,
+      "strut_name": "bottom-square (wheel @0\u00b0)",
+      "prop": 20.7375511420571,
+      "shell_gap": 31.507958321292932,
+      "hub_to_shelf": -12.0
+    }
+  ],
+  "lift_limits": {
+    "wheel_hits_strut_at": 39.0,
+    "hub_hits_shelf_at": 28.0
+  },
+  "motor_room": {
+    "equator side": {
+      "max_len": 52.5,
+      "limited_by": "prop disc",
+      "all": {
+        "prop disc": 52.5,
+        "hub plate": 65.5,
+        "lead-screw nut": 191.0
+      }
+    },
+    "pole side": {
+      "max_len": 86.5,
+      "limited_by": "hub plate",
+      "all": {
+        "hub plate": 86.5,
+        "lead-screw nut": 94.5,
+        "other motors": 118.0
+      }
+    }
+  },
+  "dynamics": {
+    "v=0.5": {
+      "accel": 0.7756212093008459,
+      "t_to_v": 0.6446445687717924,
+      "shell_torque": 0.8169876737968911,
+      "wheel_force": 2.462967648448144,
+      "wheel_torque": 0.07142606180499618,
+      "wheel_torque_peak": 0.10713909270749428,
+      "normal_load": 10.571574179371531,
+      "traction_margin": 2.1461049612309,
+      "wheel_rpm": 198.9733980615057,
+      "wheel_surface_speed": 0.6042569200894965,
+      "power_peak": 2.232397868297018,
+      "slope_at_tilt": 4.541961837656204,
+      "slope_abs_max": 9.112784025464874
+    },
+    "v=1.0": {
+      "accel": 0.7756212093008459,
+      "t_to_v": 1.2892891375435849,
+      "shell_torque": 0.8169876737968911,
+      "wheel_force": 2.462967648448144,
+      "wheel_torque": 0.07142606180499618,
+      "wheel_torque_peak": 0.10713909270749428,
+      "normal_load": 10.571574179371531,
+      "traction_margin": 2.1461049612309,
+      "wheel_rpm": 344.6094568826335,
+      "wheel_surface_speed": 1.0465351201633817,
+      "power_peak": 3.8663732158908,
+      "slope_at_tilt": 4.541961837656204,
+      "slope_abs_max": 9.112784025464874
+    }
+  },
+  "sensitivity": {
+    "d=30mm": {
+      "accel": 0.4412046870284748,
+      "t_to_v": 2.266521706138315,
+      "shell_torque": 0.4647356036699935,
+      "wheel_force": 1.4010355279922808,
+      "wheel_torque": 0.040630030311776144,
+      "wheel_torque_peak": 0.060945045467664216,
+      "normal_load": 10.571574179371531,
+      "traction_margin": 3.772771627897568,
+      "wheel_rpm": 344.6094568826335,
+      "wheel_surface_speed": 1.0465351201633817,
+      "power_peak": 2.199349326960853,
+      "slope_at_tilt": 2.723349125867365,
+      "slope_abs_max": 5.452875384433891
+    },
+    "d=50mm": {
+      "accel": 0.7756212093008459,
+      "t_to_v": 1.2892891375435849,
+      "shell_torque": 0.8169876737968911,
+      "wheel_force": 2.462967648448144,
+      "wheel_torque": 0.07142606180499618,
+      "wheel_torque_peak": 0.10713909270749428,
+      "normal_load": 10.571574179371531,
+      "traction_margin": 2.1461049612309,
+      "wheel_rpm": 344.6094568826335,
+      "wheel_surface_speed": 1.0465351201633817,
+      "power_peak": 3.8663732158908,
+      "slope_at_tilt": 4.541961837656204,
+      "slope_abs_max": 9.112784025464874
+    },
+    "d=80mm": {
+      "accel": 1.3520898523974494,
+      "t_to_v": 0.7395958177090498,
+      "shell_torque": 1.4242013111919805,
+      "wheel_force": 4.293530816739507,
+      "wheel_torque": 0.1245123936854457,
+      "wheel_torque_peak": 0.18676859052816855,
+      "normal_load": 10.571574179371531,
+      "traction_margin": 1.2311049612309002,
+      "wheel_rpm": 344.6094568826335,
+      "wheel_surface_speed": 1.0465351201633817,
+      "power_peak": 6.739996183832493,
+      "slope_at_tilt": 7.27909535977602,
+      "slope_abs_max": 14.679118458262261
+    },
+    "d=120mm": {
+      "accel": 2.3030296999322206,
+      "t_to_v": 0.43421064002319665,
+      "shell_torque": 2.425857950595273,
+      "wheel_force": 7.313218844880948,
+      "wheel_torque": 0.2120833465015475,
+      "wheel_torque_peak": 0.31812501975232127,
+      "normal_load": 10.571574179371531,
+      "traction_margin": 0.7227716278975668,
+      "wheel_rpm": 344.6094568826335,
+      "wheel_surface_speed": 1.0465351201633817,
+      "power_peak": 11.480310543912887,
+      "slope_at_tilt": 10.9559387475283,
+      "slope_abs_max": 22.34037928217973
+    }
+  },
+  "motor_req": {
+    "rpm_loaded": 344.6094568826335,
+    "rpm_noload_min": 459.4792758435113,
+    "torque_cont": 0.07142606180499618,
+    "torque_peak": 0.10713909270749428,
+    "stall_min": 0.32141727812248283,
+    "power_peak": 3.8663732158908,
+    "tread_for_align_tol": 2.699645333593522,
+    "tread_per_count_max": 0.5399290667187044,
+    "counts_per_wheel_rev_min": 337.47465202338907
+  }
+}
