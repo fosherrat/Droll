@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+part3/cad/out/
+tools/render/node_modules/
