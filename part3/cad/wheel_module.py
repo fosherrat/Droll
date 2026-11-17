@@ -266,11 +266,11 @@ def hub_cut_world(lift):
     return Pos(0, y - 500, 0) * Box(2000, 1000, 2000)
 
 
-def axis_xz(az, x_local):
+def axis_xz(az, x_local, y_local=0.0):
     """World x/z where the pod-frame line (x_local, 0, Z) crosses the hub plate mid-plane (rolling)."""
     pl, _ = pod_plane(az)
     y = P.HUB_Y_DOWN - HUB_T / 2
-    p0 = pl.from_local_coords((x_local, 0, 0))
+    p0 = pl.from_local_coords((x_local, y_local, 0))
     d = pl.z_dir
     t = (y - p0.Y) / d.Y
     return p0.X + d.X * t, p0.Z + d.Z * t
@@ -285,8 +285,8 @@ def tower_world(az, lift):
 
 
 def tower_top_xz(az):
-    """World x/z of the two tower screws (at pod X = ±(ROD_X − 9), between the rods)."""
-    return [axis_xz(az, sx * (ROD_X - 9)) for sx in (1, -1)]
+    """World x/z of the two tower screws (pod X = 0, Y = ±4.5: centre of the tower, clear of the rod pockets)."""
+    return [axis_xz(az, 0.0, sy * 4.5) for sy in (1, -1)]
 
 
 def rod_top_xz(az):
@@ -320,7 +320,7 @@ def hub_plate():
         for xz in tower_top_xz(az):
             holes.append(Pos(*_skxy(xz)) * Circle(1.7))
         for xz in rod_top_xz(az):                            # rod tops + collars pass at full bump
-            holes.append(Pos(*_skxy(xz)) * Circle(5.5))
+            holes.append(Pos(*_skxy(xz)) * Circle(6.5))
     for h in holes:
         s -= hplate(P.HUB_Y_DOWN + 1, HUB_T + 2, h)
     return col(s, C_LASER, "hub plate")
