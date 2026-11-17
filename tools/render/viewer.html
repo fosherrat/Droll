@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#fff;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"/tools/render/node_modules/three/build/three.module.js","three/addons/":"/tools/render/node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<script type="module">
+// Offline CAD renderer. Params (query string, JSON in ?cfg=):
+//  models: [{url, pos:[x,y,z], rot:[rx,ry,rz] deg, opacity, color}], view: iso|front|side|top|[x,y,z] dir,
+//  w,h, edges (bool), ground (bool), fit (margin), up: "y"|"z"
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const cfg = JSON.parse(decodeURIComponent(new URLSearchParams(location.search).get('cfg')));
+const W = cfg.w || 1600, H = cfg.h || 1100;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(cfg.bg || '#ffffff');
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+const root = new THREE.Group(); scene.add(root);
+if (cfg.up === 'z') root.rotation.x = -Math.PI / 2;   // CAD z-up -> three y-up
+
+const loader = new GLTFLoader();
+const d2r = d => d * Math.PI / 180;
+for (const m of cfg.models) {
+  const g = await loader.loadAsync(m.url);
+  const o = g.scene;
+  if (m.pos) o.position.set(...m.pos);
+  if (m.rot) o.rotation.set(...m.rot.map(d2r), 'XYZ');
+  if (m.quat) o.quaternion.set(...m.quat);
+  o.traverse(n => {
+    if (!n.isMesh) return;
+    n.castShadow = n.receiveShadow = true;
+    const src = n.material;
+    const mat = new THREE.MeshStandardMaterial({
+      color: m.color ? new THREE.Color(m.color) : src.color, metalness: m.metal ?? 0.25,
+      roughness: m.rough ?? 0.55, transparent: (m.opacity ?? 1) < 1, opacity: m.opacity ?? 1,
+      side: THREE.DoubleSide, depthWrite: (m.opacity ?? 1) >= 1,
+      polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
+    n.material = mat;
+    if (cfg.edges !== false && (m.edges ?? true)) {
+      const e = new THREE.LineSegments(new THREE.EdgesGeometry(n.geometry, cfg.edgeAngle || 28),
+        new THREE.LineBasicMaterial({ color: m.edgeColor || '#1b1f27', transparent: true, opacity: m.edgeOpacity ?? 0.55 }));
+      n.add(e);
+    }
+  });
+  root.add(o);
+}
+for (const l of cfg.lines || []) {   // overlay polylines in model units: {pts:[[x,y,z]...], color}
+  const geo = new THREE.BufferGeometry().setFromPoints(l.pts.map(p => new THREE.Vector3(...p)));
+  root.add(new THREE.Line(geo, new THREE.LineBasicMaterial({ color: l.color || '#c4352b' })));
+}
+root.updateMatrixWorld(true);
+const box = new THREE.Box3().setFromObject(root);
+const ctr = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
+const rad = size.length() / 2;
+
+// lights
+const key = new THREE.DirectionalLight(0xffffff, 1.6);
+key.position.copy(ctr).add(new THREE.Vector3(1.2, 2.2, 1.6).multiplyScalar(rad * 2));
+key.target.position.copy(ctr); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048);
+const sc = key.shadow.camera; sc.left = sc.bottom = -rad * 1.6; sc.right = sc.top = rad * 1.6; sc.near = 0.1; sc.far = rad * 10;
+scene.add(key, key.target);
+scene.add(new THREE.HemisphereLight(0xffffff, 0xdfe3ea, 0.35));
+if (cfg.ground !== false) {
+  const gnd = new THREE.Mesh(new THREE.PlaneGeometry(rad * 30, rad * 30), new THREE.ShadowMaterial({ opacity: 0.16 }));
+  gnd.rotation.x = -Math.PI / 2; gnd.position.y = box.min.y - 0.01; gnd.receiveShadow = true; scene.add(gnd);
+}
+
+// camera
+const dirs = { iso: [1, 0.8, 1.25], front: [0, 0, 1], side: [1, 0, 0], top: [0, 1, 0.0001], back: [-0.9, 0.6, -1.1], below: [0.9, -0.7, 1.1] };
+const dir = new THREE.Vector3(...(Array.isArray(cfg.view) ? cfg.view : dirs[cfg.view || 'iso'])).normalize();
+const ortho = cfg.ortho ?? false;
+let cam;
+if (ortho) {
+  const s = rad * (cfg.fit || 1.08), a = W / H;
+  cam = new THREE.OrthographicCamera(-s * a, s * a, s, -s, 0.1, rad * 20);
+} else {
+  cam = new THREE.PerspectiveCamera(cfg.fov || 24, W / H, rad / 50, rad * 40);
+}
+const dist = ortho ? rad * 5 : rad / Math.sin(THREE.MathUtils.degToRad((cfg.fov || 24) / 2)) * (cfg.fit || 1.08);
+cam.position.copy(ctr).addScaledVector(dir, dist);
+if (cfg.view === 'top') cam.up.set(0, 0, -1);
+cam.lookAt(cfg.target ? new THREE.Vector3(...cfg.target) : ctr);
+if (cfg.zoom) { cam.zoom = cfg.zoom; cam.updateProjectionMatrix(); }
+renderer.render(scene, cam);
+window.__ready = true;
+</script></body></html>
