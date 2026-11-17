@@ -1,0 +1,157 @@
+{
+ "total_g": 941,
+ "unsprung_per_pod_g": 216,
+ "wheel_g": 47.8,
+ "rows": [
+  {
+   "group": "fixed",
+   "part": "base plate (est., windows ~45 %)",
+   "qty": 1,
+   "grams": 62.5
+  },
+  {
+   "group": "fixed",
+   "part": "rod \u00d86",
+   "qty": 2,
+   "grams": 32.9
+  },
+  {
+   "group": "fixed",
+   "part": "battery shelf",
+   "qty": 1,
+   "grams": 31.5
+  },
+  {
+   "group": "fixed",
+   "part": "carbon post \u00d86",
+   "qty": 1,
+   "grams": 1.5
+  },
+  {
+   "group": "lift",
+   "part": "hub plate",
+   "qty": 1,
+   "grams": 25.3
+  },
+  {
+   "group": "lift",
+   "part": "LM6UU",
+   "qty": 2,
+   "grams": 15.2
+  },
+  {
+   "group": "lift",
+   "part": "Tr8\u00d71.5 flange nut",
+   "qty": 1,
+   "grams": 13.3
+  },
+  {
+   "group": "lift",
+   "part": "LM6UU housing",
+   "qty": 2,
+   "grams": 3.8
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "gearmotor Pololu 4843",
+   "qty": 3,
+   "grams": 300.0
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "omni wheel Nexus 14135",
+   "qty": 3,
+   "grams": 143.3
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "carriage",
+   "qty": 3,
+   "grams": 103.9
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "tower",
+   "qty": 3,
+   "grams": 58.5
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "rod \u00d84",
+   "qty": 6,
+   "grams": 31.3
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "axle \u00d85",
+   "qty": 3,
+   "grams": 26.9
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "fasteners (M2.5/M3, set screws)",
+   "qty": 3,
+   "grams": 18.0
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "motor cable 6-wire + JST-PH",
+   "qty": 3,
+   "grams": 15.0
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "685ZZ",
+   "qty": 6,
+   "grams": 13.3
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "LM4UU",
+   "qty": 6,
+   "grams": 12.8
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "wheel flange",
+   "qty": 3,
+   "grams": 9.6
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "stop collar",
+   "qty": 6,
+   "grams": 9.6
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "pinion bevel gear",
+   "qty": 3,
+   "grams": 4.6
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "wheel bevel gear",
+   "qty": 3,
+   "grams": 4.4
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "spring",
+   "qty": 6,
+   "grams": 2.1
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "bump pad",
+   "qty": 3,
+   "grams": 1.2
+  },
+  {
+   "group": "pod (\u00d73)",
+   "part": "spacer",
+   "qty": 3,
+   "grams": 0.4
+  }
+ ]
+}

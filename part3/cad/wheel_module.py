@@ -489,19 +489,30 @@ if __name__ == "__main__":
                   spring_loaded_len=SPRING_LOADED_L, tower_z0=TOWER_Z0, rod_len=ROD_TOP - BRIDGE_Z0 - 0.5)
     print(json.dumps(report, indent=1, default=float))
     states = {}
-    for lift in (0.0, P.LIFT_STROKE):
+    for lift in ([] if "--plate-only" in sys.argv else (0.0, P.LIFT_STROKE)):
         parts, ctx, pw = assembly(lift)
         states[lift] = pw
         tag = "rolling" if lift == 0 else "lifted"
         export(f"p3_assembly_{tag}", parts)
         print(tag, "exported", round(time.time() - t0, 1), "s")
-    # base plate from both states (+ bump: carriage up by BUMP in the rolling state)
-    by_az = {az: states[0.0][az] + states[P.LIFT_STROKE][az] for az in P.WHEEL_AZIMUTHS}
+    # base plate windows from light envelopes (wheel as a Ø61 × 28 cylinder, no springs) in
+    # rolling, bump and lifted states — the full vendor meshes run out of memory here
+    def envelopes(az, lift, bump):
+        mv, fx = pod(lift, bump)
+        dz = -STATIC_DEFL if lift > 0 else bump
+        out = [Pos(0, 0, dz) * ycyl(30.5, -14, 14)]
+        out += [m for m in mv + fx if "omni" not in m.label and m.label != "spring"]
+        return [to_world(o, az, lift) for o in out] + [tower_world(az, lift)]
+    by_az = {az: envelopes(az, 0, 0) + envelopes(az, 0, BUMP) + envelopes(az, P.LIFT_STROKE, 0)
+             for az in P.WHEEL_AZIMUTHS}
     bp = base_plate(by_az)
     export("p3_base_plate", [bp])
     ctx = [cage_struts(), props(), shell_lower()]
     export("p3_context_cage", [cage_struts()])
     export("p3_context_props", [props()])
     export("p3_context_shell", [shell_lower()])
-    export_step(bp, str(OUT / "p3_base_plate.step"))
+    try:                                                    # STEP files are a step-5 deliverable
+        export_step(bp, str(OUT / "p3_base_plate.step"))
+    except RuntimeError as e:
+        print("base plate STEP not written:", e, "valid:", bp.is_valid)
     print("done", round(time.time() - t0, 1), "s")
