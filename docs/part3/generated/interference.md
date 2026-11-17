@@ -35,3 +35,70 @@ Exact distances (BRepExtrema). Designed contacts are checked for overlap volume.
 | pod 120° ↔ centre rods / screw | 11.6 |
 | pod 240° ↔ centre rods / screw | 11.6 |
 
+## bump +10 (lift 0.0 mm, bump 10.0 mm)
+
+- Collisions: **0**
+- Designed contacts with overlap > 0.5 mm³: **0**
+- Pairs closer than 3 mm (not touching): 78
+  - omni wheel Nexus 14135@240 ↔ wheel flange@240: 0.05 mm
+  - omni wheel Nexus 14135@120 ↔ wheel flange@120: 0.05 mm
+  - omni wheel Nexus 14135@0 ↔ wheel flange@0: 0.05 mm
+  - wheel bevel gear@0 ↔ pinion bevel gear@0: 0.05 mm
+  - wheel bevel gear@120 ↔ pinion bevel gear@120: 0.05 mm
+  - wheel bevel gear@240 ↔ pinion bevel gear@240: 0.05 mm
+  - omni wheel Nexus 14135@120 ↔ axle Ø5@120: 0.05 mm
+  - omni wheel Nexus 14135@240 ↔ axle Ø5@240: 0.05 mm
+  - omni wheel Nexus 14135@0 ↔ axle Ø5@0: 0.05 mm
+  - spacer@120 ↔ axle Ø5@120: 0.10 mm
+  - spacer@240 ↔ axle Ø5@240: 0.10 mm
+  - spacer@0 ↔ axle Ø5@0: 0.10 mm
+
+| Pod vs context (mm) | 0° | 120° | 240° |
+|---|---|---|---|
+| cage strut | 13.3 | 18.8 | 18.8 |
+| prop disc | 26.4 | 21.7 | 21.7 |
+| shell | 10.2 | 10.2 | 10.2 |
+
+| Clearance | mm |
+|---|---|
+| pod 0° ↔ pod 120° | 3.1 |
+| pod 0° ↔ pod 240° | 3.1 |
+| pod 120° ↔ pod 240° | 3.1 |
+| pod 0° ↔ centre rods / screw | 5.8 |
+| pod 120° ↔ centre rods / screw | 5.8 |
+| pod 240° ↔ centre rods / screw | 5.8 |
+
+## lifted (lift 22.5 mm, bump 0.0 mm)
+
+- Collisions: **0**
+- Designed contacts with overlap > 0.5 mm³: **0**
+- Pairs closer than 3 mm (not touching): 62
+  - omni wheel Nexus 14135@120 ↔ wheel flange@120: 0.05 mm
+  - omni wheel Nexus 14135@0 ↔ wheel flange@0: 0.05 mm
+  - omni wheel Nexus 14135@240 ↔ wheel flange@240: 0.05 mm
+  - wheel bevel gear@0 ↔ pinion bevel gear@0: 0.05 mm
+  - wheel bevel gear@120 ↔ pinion bevel gear@120: 0.05 mm
+  - wheel bevel gear@240 ↔ pinion bevel gear@240: 0.05 mm
+  - omni wheel Nexus 14135@240 ↔ axle Ø5@240: 0.05 mm
+  - omni wheel Nexus 14135@0 ↔ axle Ø5@0: 0.05 mm
+  - omni wheel Nexus 14135@120 ↔ axle Ø5@120: 0.05 mm
+  - spacer@120 ↔ axle Ø5@120: 0.10 mm
+  - spacer@0 ↔ axle Ø5@0: 0.10 mm
+  - spacer@240 ↔ axle Ø5@240: 0.10 mm
+
+| Pod vs context (mm) | 0° | 120° | 240° |
+|---|---|---|---|
+| cage strut | 3.8 | 12.2 | 12.2 |
+| prop disc | 17.6 | 14.1 | 14.1 |
+| shell | 17.4 | 17.4 | 17.4 |
+
+| Clearance | mm |
+|---|---|
+| pod 0° ↔ pod 120° | 12.4 |
+| pod 0° ↔ pod 240° | 12.4 |
+| pod 120° ↔ pod 240° | 12.4 |
+| pod 0° ↔ centre rods / screw | 5.3 |
+| pod 120° ↔ centre rods / screw | 5.3 |
+| pod 240° ↔ centre rods / screw | 5.3 |
+
+Shell distance is 0 in the rolling states by design (wheel contact).
